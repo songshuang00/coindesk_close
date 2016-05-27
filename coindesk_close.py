@@ -16,7 +16,7 @@ with open('coindesk-bpi-USD-close.csv', 'rb') as csvfile:
 
 x= np.arange(n+1)
 for n in price:
-    y[n]= int(price[n])
+    y[n]= float(price[n])
 
 def predict_price(x, y, n):    
     pf= sp.polyfit(x, y, 5)
@@ -32,7 +32,7 @@ def average_price(i, n, price):
         for p in range(n-i+2):
             for q in range(i):
                 sum[p]+= price[m-q]
-            average[p]= math.round(sum[p]/i)
+            average[p]= math.round(sum[p]/i, 2)
     return average
 
 x_5= np.arange(n-3)
